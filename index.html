@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="src/css/animate.css"/>
+		<style>
+			#player{
+				position: absolute;
+				display: none;
+				width: 200px;
+				height: 300px;
+				background-color: black;
+			}
+		
+		</style>
+		<script src="src/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="build/cssanimate-1.0.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var playerTrans;
+			function enter(){
+				playerTrans.enter();
+			}
+			function leave(){
+				playerTrans.leave();
+			}
+		</script>
+	</head>
+	<body>
+		<button type="button" onclick="enter();">enter</button>
+		<button type="button" onclick="leave();">leave</button>
+		<div id="player"></div>
+		<script type="text/javascript">
+			playerTrans = $("#player").cssAnimate({
+				enter:'animated',
+				entering:'bounceIn',
+				leave:'animated',
+				leaving:'bounceOut',
+				hook:{
+					beforeEnter:function(el){
+						el.show();
+					},
+					beforeLeave:function(el){
+						el.hide();
+					},
+					startLeave:function(el){
+						el.show();
+					},
+					afterLeave:function(el){
+						el.hide();
+					}
+				}
+			});
+			
+		</script>
+	</body>
+</html>
